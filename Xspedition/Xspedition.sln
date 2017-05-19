@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xspedition.Web", "Xspedition.Web\Xspedition.Web.csproj", "{ABE8F151-9B38-4CEF-B9D6-E6B77EE6DD0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xspedition.Common", "Xspedition.Common\Xspedition.Common.csproj", "{60610F44-B447-44AC-9A77-C91180EB08B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xspedition.Loader", "Xspedition.Loader\Xspedition.Loader.csproj", "{2D4799A3-1079-41E3-9006-130B26A0BE15}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABE8F151-9B38-4CEF-B9D6-E6B77EE6DD0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABE8F151-9B38-4CEF-B9D6-E6B77EE6DD0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABE8F151-9B38-4CEF-B9D6-E6B77EE6DD0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABE8F151-9B38-4CEF-B9D6-E6B77EE6DD0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60610F44-B447-44AC-9A77-C91180EB08B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60610F44-B447-44AC-9A77-C91180EB08B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60610F44-B447-44AC-9A77-C91180EB08B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60610F44-B447-44AC-9A77-C91180EB08B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D4799A3-1079-41E3-9006-130B26A0BE15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D4799A3-1079-41E3-9006-130B26A0BE15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D4799A3-1079-41E3-9006-130B26A0BE15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D4799A3-1079-41E3-9006-130B26A0BE15}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>XSPedition</title>
+
+    @Scripts.Render("~/bundles/vis")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.2.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <link href="https://code.highcharts.com/highcharts.css" rel="stylesheet" />
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <link href="~/Content/navbar.css" rel="stylesheet"/>
+    <link href="~/Content/index.css" rel="stylesheet">
+    <link href="~/Content/breadcrumbs.css" rel="stylesheet">
+    <script src="~/Scripts/CaTimeline.js"></script>
+    <script type="text/javascript">
+        var root = '@Url.Content("~/")';
+    </script>
+</head>
+<body>
+    <div class="bannerfull" data-magellan-expedition="fixed">
+        <div class="banner-content">
+            <div class="brand">
+                <img src="~/Content/fis-logo-green-small.png">
+            </div>
+            <div class="sitename">XSPedition</div>
+        </div>
+    </div>
+
+    <div class="body-content">
+        @RenderBody()
+    </div>
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

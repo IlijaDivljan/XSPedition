@@ -1,0 +1,546 @@
+﻿<div class="panel-header">
+    <span class="panel-title">Corporate Action Analytics</span>
+</div>
+
+<div class="panel ui-widget-content">
+    <ul class="breadcrumb">
+        <li data-bind="click: $root.summaryView(), css: { active: !showSingleCa() && !showCumulativeProcess() && !showSingleProcess() }"><a data-bind="visible: showSingleCa() || showCumulativeProcess() || showSingleProcess()"><span>CA Summary</span></a><span data-bind="visible: !showSingleCa() && !showCumulativeProcess() && !showSingleProcess()">CA Summary</span></li>
+        <li data-bind="visible: showSingleCa(), click: $root.caView(), css: { active: !showCumulativeProcess() && !showSingleProcess() }"><a data-bind="visible: showCumulativeProcess() || showSingleProcess()"><span data-bind="text: $root.getCaNavigation()"></span></a><span data-bind="visible: !showCumulativeProcess() && !showSingleProcess(), text: $root.getCaNavigation()"></span></li>
+        <li data-bind="visible: showCumulativeProcess(), attr: { class: 'active' }">Process Summary</li>
+        <li data-bind="visible: showSingleProcess(), text: $root.getProcessNavigation(), attr: { class: 'active' }"></li>
+    </ul>
+
+    <div id="ca-summary" data-bind="visible: !(showSingleCa() || showCumulativeProcess())" class="panel-body">
+        <div>
+            <h1>Corporate Action Process Tracker</h1>
+
+            <div class="processes-header processes-container">
+                <div class="processes-item process-container" style="flex-basis: 4%">
+                    <h4 class="process-item  cumulative-process-header">&nbsp;</h4>
+                    <div class="process-item">
+                        <div class="process-item-header text-center">ID:</div>
+                    </div>
+                </div>
+
+                <div data-bind="foreach: processes" class="processes-container" style="flex-basis: 96%">
+                    <div data-bind="attr: { id: id }" class="processes-item process-container">
+                        <h4 data-bind="text: title, click: $root.getProcessCumulativeView, attr: { class: 'process-item cumulative-process-header cumulative-process-header-' + id }"></h4>
+
+                        <div style="display: flex; flex-direction: row">
+                            <div class="process-item justified" style="flex-basis: 25%">
+                                <div data-bind="attr: { class: 'text-center cumulative-process-target-header-' + id }">Target:</div>
+                            </div>
+
+                            <div class="process-item justified" style="flex-basis: 25%">
+                                <div data-bind="attr: { class: 'text-center cumulative-process-critical-header-' + id }">Critical:</div>
+                            </div>
+
+                            <div class="process-item justified" style="flex-basis: 25%">
+                                <div data-bind="attr: { class: 'text-center cumulative-process-late-header-' + id }">Late:</div>
+                            </div>
+
+                            <div class="process-item justified" style="flex-basis: 25%">
+                                <div data-bind="attr: { class: 'text-center cumulative-process-missing-header-' + id }">Missing:</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="processes-content processes-container">
+                <div class="processes-item process-container" style="flex-basis: 4%">
+                    <div class="process-item">
+                        <div class="text-center" data-bind="foreach: summaryModel().CAs">
+                            <a>
+                                <div data-bind="text: CaId, click: $root.goToCa.bind($root, CaId), css: { grayBack: $index()%2 }"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-bind="foreach: processes" class="processes-container" style="flex-basis: 96%">
+                    <div data-bind="attr: { id: id }" class="processes-item process-container">
+                        <div style="display: flex; flex-direction: row">
+                            <div class="process-item justified" style="flex-basis: 25%">
+                                <div class="text-center" data-bind="foreach: $root.summaryModel().CAs">
+                                    <div data-bind="text: ProcessesPrecentage[$parentContext.$index()].TargetPercentage()" class="cumulative-data-item-content"></div>
+                                </div>
+                            </div>
+
+                            <div class="process-item justified" style="flex-basis: 25%">
+                                <div class="text-center" data-bind="foreach: $root.summaryModel().CAs">
+                                    <div data-bind="text: ProcessesPrecentage[$parentContext.$index()].CriticalPercentage()" class="cumulative-data-item-content"></div>
+                                </div>
+                            </div>
+
+                            <div class="process-item justified" style="flex-basis: 25%">
+                                <div class="text-center" data-bind="foreach: $root.summaryModel().CAs">
+                                    <div data-bind="text: ProcessesPrecentage[$parentContext.$index()].LatePercentage()" class="cumulative-data-item-content"></div>
+                                </div>
+                            </div>
+
+                            <div class="process-item justified" style="flex-basis: 25%">
+                                <div class="text-center" data-bind="foreach: $root.summaryModel().CAs">
+                                    <div data-bind="text: ProcessesPrecentage[$parentContext.$index()].MissingPercentage()" class="cumulative-data-item-content"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="processes-footer processes-container">
+                <div class="processes-item process-container" style="flex-basis: 4%">
+                    <div class="text-center text-bold process-item">Summary</div>
+                </div>
+
+                <div data-bind="foreach: processes" class="processes-container" style="flex-basis: 96%">
+                    <div data-bind="attr: { id: id }" class="processes-item process-container">
+                        <div style="display: flex; flex-direction: row">
+                            <div class="process-item justified" style="flex-basis: 25%">
+                                <div class="text-center">
+                                    <div data-bind="text: $root.summaryModel().SummaryProcessPrecentage[$index()].TargetPercentage, attr: { class: 'process-item cumulative-process-target-header-' + id }"></div>
+                                </div>
+                            </div>
+
+                            <div class="process-item justified" style="flex-basis: 25%">
+                                <div class="text-center">
+                                    <div data-bind="text: $root.summaryModel().SummaryProcessPrecentage[$index()].CriticalPercentage, attr: { class: 'process-item cumulative-process-critical-header-' + id }" class="cumulative-data-item-content"></div>
+                                </div>
+                            </div>
+
+                            <div class="process-item justified" style="flex-basis: 25%">
+                                <div class="text-center">
+                                    <div data-bind="text: $root.summaryModel().SummaryProcessPrecentage[$index()].LatePercentage, attr: { class: 'process-item cumulative-process-late-header-' + id }" class="cumulative-data-item-content"></div>
+                                </div>
+                            </div>
+
+                            <div class="process-item justified" style="flex-basis: 25%">
+                                <div class="text-center">
+                                    <div data-bind="text: $root.summaryModel().SummaryProcessPrecentage[$index()].MissingPercentage, attr: { class: 'process-item cumulative-process-missing-header-' + id }" class="cumulative-data-item-content"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ca-single" data-bind="visible: (showSingleCa() && !showSingleProcess())" class="panel-body">
+        <div>
+            <h1>Corporate Action Timeline</h1>
+
+            <div id="timeline" class=""></div>
+
+            <div data-bind="foreach: processes" class="processes-container">
+                <div data-bind="attr: { id: id }" class="processes-item process-container">
+
+                    <div data-bind="click: $root.showSingleProcessView, attr: { class: 'single-ca-process-header-' + id }">
+                        <h4 class="process-item single-ca-process-header" data-bind="text: title"></h4>
+                        <div class="text-center" data-bind="text: processProgressLabel"></div>
+                    </div>
+                    <div class="process-item">
+                        <div data-bind="attr: { class: 'date-item-header cumulative-process-missing-header-' + id }">Target date:</div>
+                        <div data-bind="foreach: targetDateItems" class="fixed-height-250">
+                            <span data-bind="text: $data" class="date-item-content"></span>
+                        </div>
+                    </div>
+
+                    <div class="process-item">
+                        <div data-bind="attr: { class: 'date-item-header cumulative-process-missing-header-' + id }">Critical date:</div>
+                        <div data-bind="foreach: criticalDateItems" class="fixed-height-250">
+                            <span data-bind="text: $data" class="date-item-content"></span>
+                        </div>
+                    </div>
+
+                    <div class="process-item">
+                        <div data-bind="attr: { class: 'date-item-header cumulative-process-missing-header-' + id }">Late date:</div>
+                        <div data-bind="foreach: lateDateItems" class="fixed-height-250">
+                            <span data-bind="text: $data" class="date-item-content"></span>
+                        </div>
+                    </div>
+
+                    <div class="process-item">
+                        <div data-bind="attr: { class: 'date-item-header cumulative-process-missing-header-' + id }">Missing:</div>
+                        <div data-bind="foreach: missingItems" class="fixed-height-250">
+                            <span data-bind="text: $data" class="date-item-content"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ca-charts-cumulative" data-bind="visible: showCumulativeProcess" class="panel-body">
+        <br/>
+        <div id="pieChart" style="display: inline-block; width: 25%;"></div>
+        <div id="columnChart" style="display: inline-block; width: 70%;"></div>
+        <br/>
+    </div>
+
+    <div id="single-ca-summary-process" data-bind="visible: showSingleProcess()" class="panel-body" style="display: flex; flex-direction: column;">
+        <br/>
+        <div id="single-process-timeline" class="outlined"></div>
+        <br/>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        initializeSummaryModel(viewModel);
+
+        connectToNotificationHub();
+
+    }());
+    var g_summaryProcessPrecentage;
+
+    var CaTypeCumulativeRecords = {};
+    CaTypeCumulativeRecords["1"] = [];
+    CaTypeCumulativeRecords["2"] = [];
+    CaTypeCumulativeRecords["3"] = [];
+    CaTypeCumulativeRecords["4"] = [];
+    CaTypeCumulativeRecords["5"] = [];
+    CaTypeCumulativeRecords["6"] = [];
+    CaTypeCumulativeRecords["7"] = [];
+    CaTypeCumulativeRecords["8"] = [];
+    CaTypeCumulativeRecords["9"] = [];
+    CaTypeCumulativeRecords["10"] = [];
+
+    function initializeSummaryModel() {
+        $.get("api/cumulative").done(function (data) {
+            setSummaryModel(data);
+        });
+    }
+
+    function setSummaryModel(data) {
+        var cas = [];
+        for (var i = 0; i < data.CAs.length; i++) {
+            var ca = data.CAs[i];
+            var processesPrecentage = [];
+            for (var j = 0; j < ca.ProcessesPrecentage.length; j++) {
+                var pp = ca.ProcessesPrecentage[j];
+                processesPrecentage.push(new ProcessPrecentageModel(pp.ProcessType, pp.Target, pp.Critical, pp.Late, pp.Missing));
+            }
+
+            cas.push(new SummaryCaModel(ca.CaId, processesPrecentage));
+            CaTypeCumulativeRecords[ca.CaTypeId.toString()].push(ca);
+        }
+
+        var summaryProcessPrecentage = [];
+        for (var i = 0; i < data.SummaryProcessPrecentage.length; i++) {
+            var pp = data.SummaryProcessPrecentage[i];
+            summaryProcessPrecentage.push(new ProcessPrecentageModel(pp.ProcessType, pp.Target, pp.Critical, pp.Late, pp.Missing));
+        }
+
+        var newSummaryModel = new SummaryModel(cas, summaryProcessPrecentage);
+        viewModel.summaryModel(newSummaryModel);
+        //pie
+        g_summaryProcessPrecentage = summaryProcessPrecentage;
+    }
+
+    function connectToNotificationHub() {
+
+        var notif = $.connection.NotificationHub;
+
+        notif.client.updateProcess = function (data) {
+            CaTimeline.replaceSingleProcess(data);
+        };
+
+        notif.client.updateSummaryModel = function (data) {
+            setSummaryModel(data);
+        };
+
+        $.connection.hub.start();
+    }
+
+    function SummaryModel(CAs, SummaryProcessPrecentage) {
+        this.CAs = CAs;
+        this.SummaryProcessPrecentage = SummaryProcessPrecentage;
+    }
+
+    function SummaryCaModel(CaId, ProcessesPrecentage) {
+        this.CaId = CaId;
+        this.ProcessesPrecentage = ProcessesPrecentage;
+    }
+
+    function ProcessPrecentageModel(ProcessType, Target, Critical, Late, Missing) {
+        this.ProcessType = ProcessType;
+        this.Target = Target;
+        this.Critical = Critical;
+        this.Late = Late;
+        this.Missing = Missing;
+
+        this.TargetPercentage = ko.pureComputed(function () {
+            if (this.Target == 0) return "-";
+            return this.Target.toFixed(1) + "%";
+        }, this);
+
+        this.CriticalPercentage = ko.pureComputed(function () {
+            if (this.Critical == 0) return "-";
+            return this.Critical.toFixed(1) + "%";
+        }, this);
+
+        this.LatePercentage = ko.pureComputed(function () {
+            if (this.Late == 0) return "-";
+            return this.Late.toFixed(1) + "%";
+        }, this);
+
+        this.MissingPercentage = ko.pureComputed(function () {
+            if (this.Missing == 0) return "-";
+            return this.Missing.toFixed(1) + "%";
+        }, this);
+    }
+
+    function Process(id, title, targetDateItems, criticalDateItems, lateDateItems, missingItems, processActionName, totalItemCount, processedItemCount, processPercentage) {
+        this.id = id;
+        this.title = title;
+        this.targetDateItems = targetDateItems;
+        this.criticalDateItems = criticalDateItems;
+        this.lateDateItems = lateDateItems;
+        this.missingItems = missingItems;
+        this.processActionName = processActionName;
+        this.totalItemCount = totalItemCount ? totalItemCount : 0;
+        this.processedItemCount = processedItemCount ? processedItemCount : 0;
+        this.processPercentage = typeof processPercentage === "undefined" ? 100 : processPercentage;
+
+        this.processProgressLabel = ko.pureComputed(function () {
+            return this.processActionName +
+                ": " +
+                this.processedItemCount +
+                "/" +
+                this.totalItemCount +
+                " (" +
+                this.processPercentage.toFixed(2) +
+                "%)";
+        }, this);
+    }
+
+    function AppViewModel() {
+        this.processes = ko.observableArray();
+        this.summaryModel = ko.observable();
+        this.showCumulativeProcess = ko.observable(false);
+        this.showSingleProcess = ko.observable(false);
+
+        this.processName = ko.observable(null);
+        this.selectedCaId = ko.observable(null);
+
+        this.goToCa = function (caId) {
+            CaTimeline.loadCaTimeline(caId);
+        }
+
+        this.showSingleCa = ko.pureComputed(function () {
+            return this.selectedCaId() != null;
+        }, this);
+
+        this.getCaNavigation = ko.pureComputed(function () {
+            return 'CA ' + this.selectedCaId();
+        }, this);
+
+        this.getProcessNavigation = ko.pureComputed(function () {
+            return this.processName() + ' Process';
+        }, this);
+
+        this.getProcessCumulativeView = function (process) {
+            getPieChart(g_summaryProcessPrecentage[getProcessType(process.id)]);
+            getRateChart(getProcessType(process.id));
+        };
+
+        this.summaryView = function () {
+            this.showCumulativeProcess(false);
+            this.selectedCaId(null);
+            this.showSingleProcess(false);
+        }
+
+        this.caView = function () {
+            this.showSingleProcess(false);
+        }
+
+        this.showSingleProcessView = function (process) {
+            CaTimeline.displaySingleProcessView(process.id);
+        }
+
+    }
+
+    var viewModel = new AppViewModel();
+
+    viewModel.processes([
+        new Process("scrub", "Scrubbing", [], [], [], [], "Scrubbed"),
+        new Process("notif", "Notification", [], [], [], [], "Sent"),
+        new Process("respo", "Response", [], [], [], [], "Submitted"),
+        new Process("instr", "Instruction", [], [], [], [], "Instructed"),
+        new Process("payme", "Payment", [], [], [], [], "Settled")
+    ]);
+
+    var cas = [
+        new SummaryCaModel(0, [
+            new ProcessPrecentageModel(0, 0, 0, 0, 0),
+            new ProcessPrecentageModel(1, 0, 0, 0, 0),
+            new ProcessPrecentageModel(2, 0, 0, 0, 0),
+            new ProcessPrecentageModel(3, 0, 0, 0, 0),
+            new ProcessPrecentageModel(4, 0, 0, 0, 0),
+        ])
+    ];
+
+    viewModel.summaryModel(
+        new SummaryModel(cas, [
+            new ProcessPrecentageModel(0, 0, 0, 0, 0),
+            new ProcessPrecentageModel(1, 0, 0, 0, 0),
+            new ProcessPrecentageModel(2, 0, 0, 0, 0),
+            new ProcessPrecentageModel(3, 0, 0, 0, 0),
+            new ProcessPrecentageModel(4, 0, 0, 0, 0),
+        ])
+    );
+
+    var getPieChart = function (processPrecentageModel) {
+        Highcharts.chart('pieChart', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'CA ' + getProcessName(processPrecentageModel.ProcessType) + ' Process Summary'//
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            exporting: { enabled: false },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.2f} %'
+                    }
+                }
+            },
+            series: [{
+                data: [
+                    { name: 'Target', y: processPrecentageModel.Target, sliced: true, selected: true },//56.33
+                    { name: 'Critical', y: processPrecentageModel.Critical },//24.03
+                    { name: 'Late', y: processPrecentageModel.Late },
+                    { name: 'Missing', y: processPrecentageModel.Missing }
+                ], colors: ['#8dc63f', '#ffc845', '#990000', '#222222']
+            }]
+        });
+    };
+
+    var getRateChart = function (processType) {
+        Highcharts.chart('columnChart', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'CA Type ' + getProcessName(processType) + ' Process Summary'
+            },
+            xAxis: {
+                categories: [
+                    'DRIP',
+                    'DVOP',
+                    'PINK',
+                    'TEDA',
+                    'PCAL',
+                    'RHTS',
+                    'TEND',
+                    'INTR',
+                    'DVCA',
+                    'MEV'
+                ],
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                max: 100,
+                title: {
+                    text: 'Percentage (%)'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">CA Type: {point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.2f}%</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                },
+                colors: ['#8dc63f', '#ffc845', '#990000', '#222222']
+            },
+            exporting: { enabled: false },
+            series: [{
+                name: 'Target',
+                data: getCaTypeValues(processType, 'Target'),
+                color: '#8dc63f'
+
+            }, {
+                name: 'Critical',
+                data: getCaTypeValues(processType, 'Critical'),
+                color: '#ffc845'
+
+            }, {
+                name: 'Late',
+                data: getCaTypeValues(processType, 'Late'),
+                color: '#990000'
+
+            }, {
+                name: 'Missing',
+                data: getCaTypeValues(processType, 'Missing'),
+                color: '#222222'
+
+            }],
+            colors: ['#8dc63f', '#ffc845', '#990000', '#222222']
+        });
+
+        viewModel.showCumulativeProcess(true);
+        viewModel.processName(getProcessName(processType));
+    };
+
+    var getCaTypeValues = function (processType, dateType) {
+        var result = [];
+
+        for (var i = 1; i < 11; i++) {
+            result.push(CaTypeCumulativeRecords[i].map(a => a.ProcessesPrecentage[processType][dateType]).reduce(function (a, b) { return a + b }) / CaTypeCumulativeRecords[i].length);
+        }
+        return result;
+    };
+
+    var getProcessName = function (processType) {
+        switch (processType) {
+            case 0:
+                return "Scrubbing";
+            case 1:
+                return "Notification";
+            case 2:
+                return "Response";
+            case 3:
+                return "Instruction";
+            case 4:
+                return "Payment";
+        }
+    };
+
+    var getProcessType = function (processId) {
+        switch (processId) {
+            case 'scrub':
+                return 0;
+            case 'notif':
+                return 1;
+            case 'respo':
+                return 2;
+            case 'instr':
+                return 3;
+            case 'payme':
+                return 4;
+        }
+    };
+
+    ko.applyBindings(viewModel);
+</script>
+

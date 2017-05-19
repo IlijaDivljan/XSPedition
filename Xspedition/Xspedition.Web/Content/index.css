@@ -1,0 +1,314 @@
+﻿.outlined {
+    outline: 1px solid #ccc;
+}
+
+.processes-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 100%;
+}
+
+.processes-item {
+    flex-grow: 1;
+    flex-basis: 20%;
+}
+
+.process-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.process-item {
+    flex-grow: 1;
+}
+
+.justified {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.panel {
+    border: 1px solid #ddd;
+    box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.25);
+    height: auto;
+}
+
+.panel-header {
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+    background: #007D8A;
+    color: white;
+}
+
+.panel-title {
+    font-size: 18px;
+    padding-bottom: 15px;
+}
+
+.panel-body {
+    padding: 15px;
+    padding-top: 0px;
+}
+
+.processes-header {
+    margin-right: 17px;
+}
+
+.processes-content {
+    max-height: 700px;
+    overflow-y: scroll;
+}
+
+.processes-footer {
+    margin-right: 17px;
+}
+
+.fixed-height-250 {
+    height: 120px;
+    overflow-y: auto;
+}
+
+.date-item-header {
+    font-size: 16px;
+    display: block;
+    line-height: 1;
+    padding: 5px;
+    padding-left: 15px;
+    margin-bottom: 5px;
+}
+
+.date-item-content {
+    font-size: 12px;
+    display: block;
+    line-height: 1.5;
+    padding-left: 30px;
+}
+
+.date-item-content:nth-child(even) {
+    background: #eee;
+}
+
+.cumulative-data-item-content:nth-child(even) {
+    background: #eee;
+}
+
+.grayBack {
+    background: #eee;
+}
+
+.cumulative-process-header {
+    margin: 0px;
+    padding: 15px;
+    text-align: center;
+}
+
+.single-ca-process-header {
+    margin: 0px;
+    padding: 15px;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.cumulative-process-header-scrub {
+    background: rgba(141, 198, 63, 0.3);
+}
+
+.cumulative-process-target-header-scrub {
+    background: rgba(141, 198, 63, 0.3);
+}
+
+.cumulative-process-critical-header-scrub {
+    background: rgba(141, 198, 63, 0.4);
+}
+
+.cumulative-process-late-header-scrub {
+    background: rgba(141, 198, 63, 0.5);
+}
+
+.cumulative-process-missing-header-scrub {
+    background: rgba(141, 198, 63, 0.6);
+}
+
+.cumulative-process-header-scrub:hover {
+    background: rgba(141, 198, 63, 0.6);
+    cursor: pointer;
+}
+
+.cumulative-process-header-notif {
+    background: rgba(255, 200, 69, 0.3);
+}
+
+.cumulative-process-target-header-notif {
+    background: rgba(255, 200, 69, 0.3);
+}
+
+.cumulative-process-critical-header-notif {
+    background: rgba(255, 200, 69, 0.4);
+}
+
+.cumulative-process-late-header-notif {
+    background: rgba(255, 200, 69, 0.5);
+}
+
+.cumulative-process-missing-header-notif {
+    background: rgba(255, 200, 69, 0.6);
+}
+
+.cumulative-process-header-notif:hover {
+    background: rgba(255, 200, 69, 0.6);
+    cursor: pointer;
+}
+
+.cumulative-process-header-respo {
+    background: rgba(0, 193, 213, 0.3);
+}
+
+.cumulative-process-target-header-respo {
+    background: rgba(0, 193, 213, 0.3);
+}
+
+.cumulative-process-critical-header-respo {
+    background: rgba(0, 193, 213, 0.4);
+}
+
+.cumulative-process-late-header-respo {
+    background: rgba(0, 193, 213, 0.5);
+}
+
+.cumulative-process-missing-header-respo {
+    background: rgba(0, 193, 213, 0.6);
+}
+
+.cumulative-process-header-respo:hover {
+    background: rgba(0, 193, 213, 0.6);
+    cursor: pointer;
+}
+
+.cumulative-process-header-instr {
+    background: rgba(114, 36, 108, 0.3);
+}
+
+.cumulative-process-target-header-instr {
+    background: rgba(114, 36, 108, 0.3);
+}
+
+.cumulative-process-critical-header-instr {
+    background: rgba(114, 36, 108, 0.4);
+}
+
+.cumulative-process-late-header-instr {
+    background: rgba(114, 36, 108, 0.5);
+}
+
+.cumulative-process-missing-header-instr {
+    background: rgba(114, 36, 108, 0.6);
+}
+
+.cumulative-process-header-instr:hover {
+    background: rgba(114, 36, 108, 0.6);
+    cursor: pointer;
+}
+
+.cumulative-process-header-payme {
+    background: rgba(0, 151, 117, 0.3); 
+}
+
+.cumulative-process-target-header-payme {
+    background: rgba(0, 151, 117, 0.3); 
+}
+
+.cumulative-process-critical-header-payme {
+    background: rgba(0, 151, 117, 0.4); 
+}
+
+.cumulative-process-late-header-payme {
+    background: rgba(0, 151, 117, 0.5); 
+}
+
+.cumulative-process-missing-header-payme {
+    background: rgba(0, 151, 117, 0.6); 
+}
+
+.cumulative-process-header-payme:hover {
+    background: rgba(0, 151, 117, 0.6);
+    cursor: pointer;
+}
+
+.single-ca-process-header-scrub {
+    background: rgba(141, 198, 63, 0.3);
+}
+
+.single-ca-process-header-scrub:hover {
+    background: rgba(141, 198, 63, 0.6);
+    cursor: pointer;
+}
+
+.single-ca-process-header-notif {
+    background: rgba(255, 200, 69, 0.3);
+}
+
+.single-ca-process-header-notif:hover {
+    background: rgba(255, 200, 69, 0.6);
+    cursor: pointer;
+}
+
+.single-ca-process-header-respo {
+    background: rgba(0, 193, 213, 0.3);
+}
+
+.single-ca-process-header-respo:hover {
+    background: rgba(0, 193, 213, 0.6);
+    cursor: pointer;
+}
+
+.single-ca-process-header-instr {
+    background: rgba(114, 36, 108, 0.3);
+}
+
+.single-ca-process-header-instr:hover {
+    background: rgba(114, 36, 108, 0.6);
+    cursor: pointer;
+}
+
+.single-ca-process-header-payme {
+    background: rgba(0, 151, 117, 0.3); 
+}
+
+.single-ca-process-header-payme:hover {
+    background: rgba(0, 151, 117, 0.6);
+    cursor: pointer;
+}
+
+.single-timeline-scrub-region {
+    background: rgba(141, 198, 63, 0.3) !important;
+}
+
+.single-timeline-notif-region {
+    background: rgba(255, 200, 69, 0.3) !important;
+}
+
+.single-timeline-respo-region {
+    background: rgba(0, 193, 213, 0.3) !important;
+}
+
+.single-timeline-instr-region {
+    background: rgba(114, 36, 108, 0.3) !important;
+}
+
+.single-timeline-payme-region {
+    background: rgba(0, 151, 117, 0.3) !important; 
+}
+
+.single-timeline-field {
+    line-height: 0.9;
+    font-size: 12px;
+}

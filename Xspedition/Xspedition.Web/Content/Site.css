@@ -1,0 +1,65 @@
+﻿body {
+    padding-bottom: 20px;
+    font-family: arial, helvetica, sans-serif;
+    font: normal 16px arial, sans-serif;
+    color: #464646;
+    line-height: 1.625em;
+}
+
+.body-content {
+    margin-top:15px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+h1 {
+    font: normal 20px;
+    color: #009775;
+}
+
+h2 {
+    font: normal 18px;
+    color: #007d8a;
+}
+
+h3 {
+    font: bold 16px;
+    color: #222;
+}
+
+label {
+    font-weight: normal;
+    color: #777363;
+}
+
+label.data {
+    color: #222;
+}
+
+a:link {
+    color: #2a5db0;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #2a5db0;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+a.softlink {
+    color: #666666;
+    text-decoration: underline;
+}
+
+a.softlink:hover {
+    color: #2a5db0;
+    text-decoration: underline;
+}
